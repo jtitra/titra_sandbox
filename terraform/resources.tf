@@ -328,7 +328,7 @@ resource "harness_platform_monitored_service" "devsecops_monitored_services" {
 }
 
 // Code Repo
-resource "harness_platform_repo" "org_repos" {
+resource "harness_platform_repo" "proj_repos" {
   for_each = var.repos
 
   identifier     = each.value.repo_id
@@ -350,4 +350,20 @@ resource "harness_platform_connector_prometheus" "prometheus" {
   description        = "Connector to SE Demo Cluster Prometheus Instance"
   url                = "http://prometheus-k8s.monitoring.svc.cluster.local:9090/"
   delegate_selectors = [local.delegate_selector]
+}
+
+// JDBC Connectors
+resource "harness_platform_connector_jdbc" "test" {
+  for_each = var.jdbc_connectors
+
+  identifier         = each.value.jdbc_id
+  name               = each.value.jdbc_name
+  org_id             = var.org_id
+  project_id         = var.project_id
+  url                = each.value.jdbc_url
+  delegate_selectors = [local.delegate_selector]
+  credentials {
+    username     = "petclinic"
+    password_ref = "petclinic-db"
+  }
 }

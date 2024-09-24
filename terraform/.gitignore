@@ -3,6 +3,7 @@
 #**.tfvars
 **.terraform*
 **.tfstate*
+versions.tf
 
 # Scratch space
 **/testing/

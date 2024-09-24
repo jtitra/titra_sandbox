@@ -46,3 +46,12 @@ variable "repos" {
     source_type    = string
   }))
 }
+
+// JDBC Connectors
+variable "jdbc_connectors" {
+  type = map(object({
+    jdbc_id   = string
+    jdbc_name = string
+    jdbc_url  = string
+  }))
+}

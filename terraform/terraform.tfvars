@@ -95,3 +95,27 @@ repos = {
     source_type    = "github"
   }
 }
+
+// JDBC Connectors
+jdbc_connectors = {
+  pet_dev = {
+    jdbc_id   = "PetClinic_Dev"
+    jdbc_name = "PetClinic - Dev"
+    jdbc_url  = "jdbc:postgresql://postgres-dev.postgresql.svc.cluster.local/petclinic"
+  }
+  pet_qa = {
+    jdbc_id   = "PetClinic_QA"
+    jdbc_name = "PetClinic - QA"
+    jdbc_url  = "jdbc:postgresql://postgres-qa.postgresql.svc.cluster.local/petclinic"
+  }
+  pet_prod1 = {
+    jdbc_id   = "PetClinic_Prod1"
+    jdbc_name = "PetClinic - Prod1"
+    jdbc_url  = "jdbc:postgresql://postgres-prod1.postgresql.svc.cluster.local/petclinic"
+  }
+  pet_prod2 = {
+    jdbc_id   = "PetClinic_Prod2"
+    jdbc_name = "PetClinic - Prod2"
+    jdbc_url  = "jdbc:postgresql://postgres-prod2.postgresql.svc.cluster.local/petclinic"
+  }
+}
