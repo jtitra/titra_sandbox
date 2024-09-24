@@ -213,6 +213,56 @@ resource "harness_platform_service" "devsecops_services" {
   EOT
 }
 
+resource "harness_platform_service" "petclinic_service" {
+  identifier = "PetClinic"
+  name       = "PetClinic"
+  org_id     = var.org_id
+  project_id = var.project_id
+  yaml       = <<-EOT
+    service:
+      name: PetClinic
+      identifier: PetClinic
+      orgIdentifier: ${var.org_id}
+      projectIdentifier: ${var.project_id}
+      serviceDefinition:
+        spec:
+          manifests:
+            - manifest:
+                identifier: petclinic
+                type: K8sManifest
+                spec:
+                  store:
+                    type: Github
+                    spec:
+                      connectorRef: Github
+                      gitFetchType: Branch
+                      paths:
+                        - harness-deploy/petclinic/manifests
+                      repoName: jtitra/harness-petclinic
+                      branch: main
+                  valuesPaths:
+                    - harness-deploy/petclinic/values.yaml
+                  skipResourceVersioning: false
+                  enableDeclarativeRollback: false
+          artifacts:
+            primary:
+              primaryArtifactRef: <+input>
+              sources:
+                - spec:
+                    connectorRef: account.GCP_Sales_Admin
+                    repositoryType: docker
+                    project: sales-209522
+                    region: us-east1
+                    repositoryName: titra
+                    package: petclinic
+                    version: "0.0.4"
+                    digest: ""
+                  identifier: petclinic
+                  type: GoogleArtifactRegistry
+        type: Kubernetes
+  EOT
+}
+
 // Secrets
 resource "harness_platform_secret_text" "cart_service_secret" {
   identifier  = "Cart_Service_Password_Dev"

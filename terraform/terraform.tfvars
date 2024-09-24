@@ -42,6 +42,19 @@ environments = {
           }
         }
       }
+      petclinic = {
+        infra_name       = "PetClinic Dev"
+        infra_identifier = "petclinicdev"
+        namespace        = "petclinic-dev"
+        services = {
+          petclinic = {
+            serv_name           = "PetClinic"
+            serv_identifier     = "PetClinic"
+            artifact_identifier = "petclinic"
+            artifact_tag        = "0.0.4"
+          }
+        }
+      }
     }
   }
   qa = {
@@ -62,6 +75,19 @@ environments = {
           }
         }
       }
+      petclinic = {
+        infra_name       = "PetClinic QA"
+        infra_identifier = "petclinicqa"
+        namespace        = "petclinic-qa"
+        services = {
+          petclinic = {
+            serv_name           = "PetClinic"
+            serv_identifier     = "PetClinic"
+            artifact_identifier = "petclinic"
+            artifact_tag        = "0.0.4"
+          }
+        }
+      }
     }
   }
   prod = {
@@ -79,6 +105,32 @@ environments = {
             serv_identifier     = "Boutique_PMSerivce_prod"
             artifact_identifier = "tbd"
             artifact_tag        = "tbd"
+          }
+        }
+      }
+      petclinic_prod1 = {
+        infra_name       = "PetClinic Prod1"
+        infra_identifier = "petclinicprod1"
+        namespace        = "petclinic-prod1"
+        services = {
+          petclinic = {
+            serv_name           = "PetClinic"
+            serv_identifier     = "PetClinic"
+            artifact_identifier = "petclinic"
+            artifact_tag        = "0.0.4"
+          }
+        }
+      }
+      petclinic_prod2 = {
+        infra_name       = "PetClinic Prod2"
+        infra_identifier = "petclinicprod2"
+        namespace        = "petclinic-prod2"
+        services = {
+          petclinic = {
+            serv_name           = "PetClinic"
+            serv_identifier     = "PetClinic"
+            artifact_identifier = "petclinic"
+            artifact_tag        = "0.0.4"
           }
         }
       }
